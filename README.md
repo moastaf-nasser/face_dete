@@ -1,27 +1,31 @@
-# Real-Time Biometric Face Recognition System
+# Multi-Mode Biometric Recognition & Communication System
 
-A high-performance facial recognition application powered by **Deep Learning** and **Computer Vision**. This system can identify individuals in real-time through a webcam feed by comparing live encodings against a pre-defined database of known faces.
+An advanced engineering project that combines **Deep Learning** with **Distributed Systems**. This repository features a real-time facial recognition system capable of operating both locally and over a network using a custom-built communication protocol.
 
-## 🚀 Overview
-The project implements a full biometric pipeline:
-1. **Database Loading:** Automatically scans an image directory to build a known-face database.
-2. **Feature Extraction:** Generates 128-dimensional facial encodings using the `face_recognition` library.
-3. **Real-Time Identification:** Captures webcam frames, optimizes them via resizing, and performs Euclidean distance calculations to find the closest match.
+## 📡 System Architectures
 
-## 🛠️ Technical Features
-* **Live Encoding Comparison:** Utilizing **HOG (Histogram of Oriented Gradients)** and deep learning models for high-accuracy face locations.
-* **Optimization:** Implemented frame scaling (0.25x) to ensure high FPS during real-time processing without sacrificing detection accuracy.
-* **Smart Matching:** Uses `face_distance` metrics to determine the best match among the known dataset.
+### 1. Distributed Network Mode (Client-Server)
+A centralized AI hub designed for remote biometric processing:
+* **Server (`server.py`):** A robust backend that listens for incoming UDP packets, deserializes JSON/Base64 image data, and performs recognition.
+* **Client (`client.py`):** Sends optimized image packets to the server for remote identification.
+* **Communication Layer (`communication.py`):** A custom-coded socket management class handling reliable data transmission.
 
-## 💻 Tech Stack
-* **Language:** Python
-* **Libraries:** OpenCV, Face_Recognition, Dlib, NumPy.
-* **Concepts:** Biometric Authentication, Deep Learning Encodings, Real-Time Image Processing.
+### 2. Standalone Vision Mode
+A high-speed identification tool optimized for direct hardware access:
+* **Real-Time Processing:** Uses 128-d face encodings and HOG algorithms for precision.
+* **Efficiency:** Scaled frame analysis (0.25x) to maximize FPS on edge devices.
 
-## 📖 Setup
-1. Create a folder named `images` and add photos of people you want to recognize (name the files after the people).
-2. Install dependencies: `pip install opencv-python face-recognition numpy`.
-3. Run: `python face_recog_script.py`.
+## 🛠️ Technical Highlights
+* **Data Serialization:** Custom pipeline for converting binary images to Base64 and wrapping them in structured JSON packets.
+* **Computer Vision:** Advanced implementation of **OpenCV** and **Dlib-based** face recognition.
+* **Backend Engineering:** Managed socket programming, buffer handling, and dynamic identity learning.
+
+## 📂 Repository Structure
+* `recognition.py`: Core AI logic and feature extraction.
+* `communication.py`: Network abstraction layer.
+* `server.py` / `client.py`: Distributed system implementation.
+* `Face Recognition.py`: Main standalone application.
+* `haarcascade_frontalface_default.xml`: Pre-trained model for initial detection.
 
 ---
-*Developed by Moustafa Nasser - Part of a research focus on AI and Biometric Security.*
+*Developed by Moustafa Nasser - Focused on the intersection of Software Engineering, AI, and Network Infrastructure.*
